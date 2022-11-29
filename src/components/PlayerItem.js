@@ -1,4 +1,3 @@
-// TODO: create a component that displays a single bakery item
 import "./PlayerItem.css";
 import React, { useState, useEffect } from 'react';
 
@@ -14,20 +13,18 @@ export default function PlayerItem(props) {
       });
 
     function addToCart() {
-        let newFavorites = props.filteredData
         if (props.favorites.includes(props.item.name)) {
             //remove from favorites
-            console.log(props.favorites)
             props.favorites.splice(props.favorites.indexOf(props.item.name), 1)
             //set favorites to array with removed player name
-            console.log(props.favorites)
             props.setFavorites(props.favorites)
+            props.setFavsPPGTotal(props.favsPPGTotal - props.item.PPG)
             setFavStr("Add to Favorites")
             props.forceUpdate()
         } else {
-            console.log(props.favorites)
-            props.setFavorites([...props.favorites, props.item.name])
             //add to favorites
+            props.setFavorites([...props.favorites, props.item.name])
+            props.setFavsPPGTotal(props.favsPPGTotal + props.item.PPG)
             setFavStr("Remove from Favorites")
             props.forceUpdate()
         }
@@ -48,7 +45,6 @@ export default function PlayerItem(props) {
                 <p>Turnovers: {props.item.TPG}</p>
                 <p>+/-: {props.item.PM}</p>
                 <div class="price-cart">
-                    {/* <p>${props.price}</p> */}
                     <button onClick={addToCart}>{favStr}</button>
                 </div>
             </div>

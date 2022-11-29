@@ -6,12 +6,9 @@ import playerData from "./assets/player-data.json";
 import PlayerItem from "./components/PlayerItem";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
 import Form from 'react-bootstrap/Form'
 import Navbar from 'react-bootstrap/Navbar';
-import NavItem from 'react-bootstrap/NavItem';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import { Dropdown } from 'react-bootstrap';
 
 function App() {
 
@@ -22,18 +19,12 @@ function App() {
   const [starterFilter, setStarterFilter] = useState(false);
   const [benchFilter, setBenchFilter] = useState(false);
   const [favoritesFilter, setFavoritesFilter] = useState(false);
+  const [favsPPGTotal, setFavsPPGTotal] = useState(0)
   const [sortType, setSortType] = useState("RPG")
-  const [filterType, setType] = useState("All");
-  const [filterVal, setVal] = useState("");
   const [, updateState] = useState();
   const forceUpdate = useCallback(() => updateState({}), []);
 
-
-
-  // const [cartTotal, setCartTotal] = useState(0.0); 
   const selectFilterType = (e) => {
-    // setType(eventKey);
-    // console.log(e.target.id)
     if (e.target.id == "guard") {
       setGuardFilter(!guardFilter)
     } else if (e.target.id == "forward") {
@@ -50,8 +41,6 @@ function App() {
   };
 
   const selectSortType = (e) => {
-    // setType(eventKey);
-    // console.log(e.target.id)
     if (e.target.id == "PPG") {
       setSortType("PPG")
     } else if (e.target.id == "RPG") {
@@ -70,7 +59,6 @@ function App() {
   };
   
   const matchesFilterType = item => {
-    // console.log(item.guard)
     if (guardFilter) {
       if (! (item.guard == "True")) {
         return false
@@ -238,6 +226,7 @@ function App() {
               ))}
             </Form>
             <h4 id="fav-title">Favorites </h4>
+            <p id="agg-pts">Total Favorites PPG: {favsPPGTotal}</p>
           </div>
 
           <button class="reset-button" onClick={reset}>Reset</button>
@@ -257,7 +246,7 @@ function App() {
 
       <div class="flex-container">
         {filteredData.map((item) => ( // TODO: map bakeryData to BakeryItem components
-          <PlayerItem forceUpdate={forceUpdate} favorites={favorites} setFavorites={setFavorites} favoritesFilter={favoritesFilter} setFavoritesFilter={setFavoritesFilter} filteredData={filteredData} item={item}/>
+          <PlayerItem forceUpdate={forceUpdate} favsPPGTotal={favsPPGTotal} setFavsPPGTotal={setFavsPPGTotal} favorites={favorites} setFavorites={setFavorites} favoritesFilter={favoritesFilter} setFavoritesFilter={setFavoritesFilter} filteredData={filteredData} item={item}/>
         ))}
       </div>
     </div>
