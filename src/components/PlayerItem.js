@@ -34,8 +34,8 @@ export default function PlayerItem(props) {
     }
 
     return (
-        <div id='bakery' class="bakery-item">
-            <img class='item-img' src={"/images/steph.png"} alt={"Curry"} ></img>
+        <div id='roster' class="player-item">
+            <img class='item-img' src={props.item.image} alt={"Curry"} ></img>
             <div class='item-desc'>
                 <h3>{props.item.name}</h3>
                 <p>{props.item.position}</p>

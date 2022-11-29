@@ -1,5 +1,5 @@
 
-.bakery-item {
+.player-item {
     background-color: rgb(247, 247, 247);
     width: 20em;
     margin: 1rem;
@@ -7,11 +7,12 @@
 
 .item-img {
     width: 20em;
+    height: 12em;
 }
 
 
 .item-desc {
-    background-color: rgb(247, 247, 247);
+    background-color: rgb(238, 237, 237);
     padding-top:0;
     padding: 1rem;
     /* margin: 1rem; */

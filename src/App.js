@@ -168,15 +168,14 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Golden State Warriors</h1> 
+      <h1 id="title">Dub Nation: All the Stats</h1> 
 
-      <Navbar bg="light" expand="lg">
+      <Navbar id="nav" expand="lg">
         <Container>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-          <button class="button" onClick={reset}>Reset</button>
           <h4>Position </h4>
-          <Form>
+          <Form id="position-form">
             {['checkbox'].map((type) => (
               <div key="form" className="form mb-3">
                 <Form.Check 
@@ -203,7 +202,7 @@ function App() {
               </div>
             ))}
           </Form>
-          <h4>Lineup </h4>
+          <h4 class="lineup-form">Lineup </h4>
           <Form>
             {['checkbox'].map((type) => (
               <div className="form mb-3">
@@ -224,20 +223,29 @@ function App() {
               </div>
             ))}
           </Form>
-          <Form>
-            {['checkbox'].map((type) => (
-              <div className="form mb-3">
-                <Form.Check 
-                  onChange={selectFilterType}
-                  type={type}
-                  id={`favorites`}
-                  label={`Favorites`}
-                  ref={checkboxRefFav}
-                />    
-              </div>
-            ))}
-          </Form>
-          <NavDropdown title="Sort By" id="basic-nav-dropdown">
+          <div className='flex-container'>
+            <Form >
+              {['checkbox'].map((type) => (
+                <div id="fav-form" className="form mb-3">
+                  <Form.Check 
+                    onChange={selectFilterType}
+                    type={type}
+                    id={`favorites`}
+                    label={``}
+                    ref={checkboxRefFav}
+                  />    
+                </div>
+              ))}
+            </Form>
+            <h4 id="fav-title">Favorites </h4>
+          </div>
+
+          <button class="reset-button" onClick={reset}>Reset</button>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+
+      <NavDropdown title="Sort By" class="dropdown" id="basic-nav-dropdown">
             <button class="drop-button" id={'PPG'} onClick={selectSortType}>Points</button>
             <button class="drop-button" id={'RPG'} onClick={selectSortType}>Rebounds</button>
             <button class="drop-button" id={'APG'} onClick={selectSortType}>Assists</button>
@@ -245,10 +253,7 @@ function App() {
             <button class="drop-button" id={'BPG'} onClick={selectSortType}>Blocks</button>
             <button class="drop-button" id={'TPG'} onClick={selectSortType}>Turnovers</button>
             <button class="drop-button" id={'PM'} onClick={selectSortType}>+/-</button>
-          </NavDropdown>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
+      </NavDropdown>
 
       <div class="flex-container">
         {filteredData.map((item) => ( // TODO: map bakeryData to BakeryItem components
