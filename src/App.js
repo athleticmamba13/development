@@ -133,9 +133,6 @@ function App() {
   }
 
   sort()
-  // const sortedArray = filteredData.sort((a, b) => {
-  //   return b.RPG - a.RPG;
-  // })
 
   function reset() {
     setGuardFilter(false)
@@ -145,6 +142,7 @@ function App() {
     setBenchFilter(false)
     setFavoritesFilter(false)
     setFavorites([])
+    setFavsPPGTotal(0)
     checkboxRefG.current.checked = false
     checkboxRefF.current.checked = false
     checkboxRefC.current.checked = false
