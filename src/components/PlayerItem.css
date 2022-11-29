@@ -1,0 +1,28 @@
+
+.bakery-item {
+    background-color: rgb(247, 247, 247);
+    width: 20em;
+    margin: 1rem;
+}
+
+.item-img {
+    width: 20em;
+}
+
+
+.item-desc {
+    background-color: rgb(247, 247, 247);
+    padding-top:0;
+    padding: 1rem;
+    /* margin: 1rem; */
+}
+
+.price-cart {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    position: relative;
+    bottom: 0;
+}
+
